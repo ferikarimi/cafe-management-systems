@@ -43,3 +43,5 @@
 12/2
 •vacation 
 
+13/2
+•4h work on conditional render items in dynamic pages ( 7h remaining )

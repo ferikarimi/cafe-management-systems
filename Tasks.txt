@@ -1,4 +1,3 @@
-خب
 28/1
 
 تسک قیمت اقساطی:
@@ -39,6 +38,9 @@
 11/2 
 
 •1h meet with shayan about Comment data structure 
-
 •2h work on cart sync bug ( doesn't resolve )
 •3h work on conditional render items in dynamic pages ( 11h remaining )
+
+12/2
+•vacation 
+

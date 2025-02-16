@@ -8,7 +8,7 @@ class Customers(models.Model):
         ('customer', 'Customer')
     ]
     first_name = models.CharField(max_length=100)
-    last_name = models.CharField(max_length=100, null= True)
+    last_name = models.CharField(max_length=100, blank= True)
     phone_number = PhoneNumberField()
     email = models.EmailField()
     password = models.CharField(max_length=128)

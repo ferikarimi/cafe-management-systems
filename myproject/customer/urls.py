@@ -10,10 +10,10 @@ from .views import (
 )
 
 urlpatterns = [
-    path('api/register/', register, name='register'),
-    path('api/login/', user_login, name='login'),
-    path('api/logout/', user_logout, name='logout'),
-    path('api/profile/', profile, name='profile'),
-    path('api/messages/', send_message, name='send_message'),
-     path('api/view-messages/', view_messages, name='view_messages'),
+    path('admin/register/', register, name='register'),
+    path('admin/login/', user_login, name='login'),
+    path('admin/logout/', user_logout, name='logout'),
+    path('admin/profile/', profile, name='profile'),
+    path('admin/messages/', send_message, name='send_message'),
+     path('admin/view-messages/', view_messages, name='view_messages'),
 ]

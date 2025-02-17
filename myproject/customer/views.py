@@ -2,10 +2,11 @@ from django.shortcuts import render, redirect
 from .models import Customers
 from django.contrib import messages
 from django.utils import timezone
-from django.contrib.auth import authentication, login
+from django.contrib.auth import login
 from django.contrib.auth.decorators import login_required
 from .models import Message
 from django.contrib.auth import logout
+from django.contrib.auth.hashers import make_password, check_password
 # Create your views here.
 
 def register(request):

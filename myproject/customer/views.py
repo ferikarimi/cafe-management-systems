@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from .models import Customers
 from django.contrib import messages
+from django.http import HttpResponse
 from django.utils import timezone
 from django.contrib.auth import login
 from django.contrib.auth.decorators import login_required
@@ -9,27 +10,44 @@ from django.contrib.auth import logout
 from django.contrib.auth.hashers import make_password, check_password
 # Create your views here.
 
-def register(request):
+def home_view(request):
+    return render(request, 'home.html',context=None)
+
+def about_view(request):
+    return render(request,'aboutus.html')
+
+def register_user_view(request):
     if request.method == 'POST':
         first_name = request.POST.get('first_name')
-        last_name = request.POST.get('last_name', '') #default empty
-        phone_number = request.POST.get('phone_number')
-        email = request.POST.get('email')
+        last_name = request.POST.get('last_name')
+        username = request.POST.get('username')
         password = request.POST.get('password')
-        birth_date = request.POST.get('birth_date', '') #default empty
-        
-        #new customer instance
-        customer = Customers(
-            first_name = first_name,
-            last_name = last_name,
-            phone_number = phone_number,
-            email = email,
-            password = make_password(password),
-            birth_date = birth_date
+        password_repeat = request.POST.get('password_repeat')
+        phone = request.POST.get('phone_number')
+
+        # Check if a user with the provided username already exists
+        if password is not password_repeat:
+            return HttpResponse("Your password and Repeated Ones is not equal")
+
+        user = Customers.objects.filter(username=username)
+
+        if user.exists():
+            # Display an information message if the username is taken
+            return HttpResponse("Username already taken!")
+
+        # Create a new User object with the provided information
+        Customers.objects.create_user(
+            first_name=first_name,
+            last_name=last_name,
+            username=username,
+            password=password,
+            phone_number=phone,
         )
-        customer.save()
-        messages.success(request, 'Success register')
+
+        # Redirect to login page
         return redirect('login')
+
+        # Render the registration page template (GET request)
     return render(request, 'register.html')
 
 def user_login(request):

@@ -28,6 +28,7 @@
     <!-- Tweaks for older IEs-->
     <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
     <link rel="stylesheet" href="{% static 'register/css/font-awesome.min.css' %}">
+    <title>Login</title>
 
 </head>
 <body>
@@ -79,8 +80,8 @@
         {% csrf_token %}  <!-- CSRF token for security -->
 
         <!-- Registration form heading -->
-        <h1 style="text-align: center;"><span style="color: #008000;">Register Form</span></h1>
-        <h3>Register</h3>
+        <h1 style="text-align: center;"><span style="color: #008000;">Login Form</span></h1>
+        <h3>Login</h3>
         <hr>
 
         <!-- Display error/success messages -->
@@ -91,20 +92,6 @@
                 {% endfor %}
             </div>
         {% endif %}
-
-        <!-- First Name input field -->
-        <div class="form-group">
-            <label for="exampleInputEmail1">First name</label>
-            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                   placeholder="Enter First name" name="first_name" required>
-        </div>
-
-        <!-- Last Name input field -->
-        <div class="form-group">
-            <label for="exampleInputEmail1">Last name</label>
-            <input type="text" name="last_name" class="form-control" id="exampleInputEmail1"
-                   aria-describedby="emailHelp" placeholder="Enter Last name" required>
-        </div>
 
         <!-- Username input field -->
         <div class="form-group">
@@ -119,24 +106,12 @@
             <input type="password" class="form-control" name="password" id="exampleInputPassword1"
                    placeholder="Password" required>
         </div>
-        <!-- Password input field -->
-        <div class="form-group">
-            <label for="exampleInputPassword1">Password-Repeat</label>
-            <input type="password" class="form-control" name="password_repeat" id="exampleInputPassword1"
-                   placeholder="Password" required>
-        </div>
-        <!-- phone number input field -->
-            <div class="form-group">
-                <label for="exampleInputPhoneNumber">Phone Number</label>
-                <input type="tel" class="form-control" name="phone_number" id="exampleInputPassword1"
-                       placeholder="Phone Number" required>
-            </div>
 
         <!-- Link to login page for users who already have an account -->
-        <p>Already have an account <a href="/login/">Login</a></p>
+        <p>Dont Have An Account <a href="{% url 'register' %}">Register</a></p>
 
         <!-- Submit button -->
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-primary">Login</button>
     </form>
 </div>
 <!-- footer section start -->

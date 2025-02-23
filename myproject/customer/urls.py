@@ -1,6 +1,6 @@
 from django.urls import path
 from .views import (
-    user_login,
+    login_user_view,
     user_logout,
     profile,
     view_messages,
@@ -8,14 +8,15 @@ from .views import (
     home_view,
     about_view,
     register_user_view,
-    
+
 )
 
 urlpatterns = [
     path('',home_view, name='home'),
     path('about/',about_view,name='about'),
+
+    path('login/',login_user_view,name='login'),
     path('register/',register_user_view,name='register'),
-    path('admin/login/', user_login, name='login'),
     path('admin/logout/', user_logout, name='logout'),
     path('admin/profile/', profile, name='profile'),
     path('admin/messages/', send_message, name='send_message'),

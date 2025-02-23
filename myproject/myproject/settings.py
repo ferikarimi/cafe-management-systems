@@ -82,7 +82,7 @@ WSGI_APPLICATION = 'myproject.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'cafeprojectgroupdb2',
+        'NAME': 'cafeprojectgroupdb',
         'USER': 'postgres',
         'PASSWORD': 'behrad',
         'HOST': 'localhost',
@@ -136,3 +136,5 @@ MEDIA_URL = '/media/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AUTH_USER_MODEL = 'customer.Customers'
+# LOGIN_REDIRECT_URL = "/wherenext/"
+# LOGOUT_REDIRECT_URL = 'home'

@@ -14,6 +14,7 @@ class Customers(AbstractUser):
     password = models.CharField(max_length=128)
     birth_date = models.DateField(null = True, blank= True)
     role = models.CharField(max_length= 10, choices= ROLE_CHOICES, default= 'customer' )
+    is_staff = models.BooleanField(default=False)
     
 class Message(models.Model):
     description = models.TextField()

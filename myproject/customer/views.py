@@ -1,13 +1,11 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect,reverse
 from .models import Customers
 from django.contrib import messages
-from django.http import HttpResponse
-from django.utils import timezone
-from django.contrib.auth import login
+from django.http import HttpResponse,HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
 from .models import Message
-from django.contrib.auth import logout
 from django.contrib.auth.hashers import make_password, check_password
+from django.contrib.auth import authenticate, login, logout
 # Create your views here.
 
 def home_view(request):
@@ -26,8 +24,8 @@ def register_user_view(request):
         phone = request.POST.get('phone_number')
 
         # Check if a user with the provided username already exists
-        if password is not password_repeat:
-            return HttpResponse("Your password and Repeated Ones is not equal")
+        if not password == password_repeat:
+            return HttpResponse("Your password and Repeated One is not equal")
 
         user = Customers.objects.filter(username=username)
 
@@ -51,21 +49,41 @@ def register_user_view(request):
     return render(request, 'register.html')
 
 
-def user_login(request):
-    if request.method == 'POST':
-        email = request.POST.get('email')
+# Define a view function for the login page
+def login_user_view(request):
+    # Check if the HTTP request method is POST (form submission)
+    if request.method == "POST":
+        username = request.POST.get('username')
         password = request.POST.get('password')
 
-        try:
-            user = Customers.objects.get(email=email)
-            if check_password(password, user.password):
-                login(request, user)
-                return redirect('dashboard')
-            else:
-                messages.error(request, 'Invalid email or password')
-        except Customers.DoesNotExist:
-            messages.error(request, 'User not found')
+        # Check if a user with the provided username exists
+        if not Customers.objects.filter(username=username).exists():
+            # Display an error message if the username does not exist
+            messages.error(request, 'Invalid Credentials')
+            return redirect('/login/')
+
+        # Authenticate the user with the provided username and password
+        user = authenticate(username=username, password=password)
+
+        if user is None:
+            # Display an error message if authentication fails (invalid password)
+            messages.error(request, "Invalid Credentials")
+            return redirect('/login/')
+            # Log in the user and redirect to the home page upon successful login
+
+        login(request, user)
+
+        # Redirect based on role
+        if user.role == 'admin':
+            return redirect("admin-dashboard")  # Change to actual admin dashboard URL name
+        else:
+            return redirect("home")  # Change to actual customer page URL name
+
     return render(request, 'login.html')
+
+
+
+
 
 
 # user profile

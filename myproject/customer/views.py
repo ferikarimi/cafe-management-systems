@@ -4,6 +4,7 @@ from django.contrib import messages
 from django.http import HttpResponse,HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
 from .models import Message
+from django.views.generic import View
 from django.contrib.auth.hashers import make_password, check_password
 from django.contrib.auth import authenticate, login, logout
 # Create your views here.
@@ -81,6 +82,16 @@ def login_user_view(request):
 
     return render(request, 'login.html')
 
+class LogOutView(View):
+    def get(self, request):
+        logout(request)
+        return redirect('login')
+def dashboard_view(request):
+    return render(request,'dashboard/dashboard.html')
+
+
+
+
 
 
 
@@ -129,6 +140,3 @@ def view_messages(request):
 # logout
 
 
-def user_logout(request):
-    logout(request)
-    return redirect('login')  # Redirect to login page after logout

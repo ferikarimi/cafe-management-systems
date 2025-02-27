@@ -1,7 +1,6 @@
 {% extends 'menu/base.html' %} {% load static %} {% block content %}
 <div class="container mt-5">
   <div class="row">
-    <!-- سمت راست: عکس محصول -->
     <div class="col-md-6 d-flex justify-content-center align-items-center">
       <img
         src="{% static 'menu/images/' %}{{ item.name }}.jpg"
@@ -10,7 +9,6 @@
       />
     </div>
 
-    <!-- سمت چپ: توضیحات محصول -->
     <div class="col-md-6">
       <h2 class="text-align">{{item.category}}</h2>
       <h2 class="text-center"><strong>{{ item.name }}</strong></h2>

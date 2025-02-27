@@ -6,5 +6,8 @@ class ContactUs(models.Model):
     description = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
 
+    class Meta:
+        verbose_name_plural = "Contact Us"
+
     def __str__(self):
         return self.title

@@ -4,6 +4,8 @@ from django.core.validators import MinValueValidator, MaxValueValidator
     
 class Category(models.Model):
     title = models.CharField(max_length= 100)
+    class Meta:
+        verbose_name_plural = "Categories"
 
 
 class MenuItems(models.Model):
@@ -13,3 +15,5 @@ class MenuItems(models.Model):
     discount = models.PositiveSmallIntegerField(validators=[MinValueValidator(0), MaxValueValidator(99)], default=0)
     serving_time_period = models.PositiveIntegerField()
     estimated_cooking_time = models.PositiveIntegerField()
+    class Meta:
+        verbose_name_plural = "Menu Items"

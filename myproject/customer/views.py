@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect,reverse
-from .models import Customers
+from .models import Customers,Message
+from orders.models import Orders
 from django.contrib import messages
 from django.http import HttpResponse,HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
@@ -76,9 +77,9 @@ def login_user_view(request):
 
         # Redirect based on role
         if user.role == 'admin':
-            return redirect("admin-dashboard")  # Change to actual admin dashboard URL name
+            return redirect("admin-dashboard")
         else:
-            return redirect("home")  # Change to actual customer page URL name
+            return redirect("home")
 
     return render(request, 'login.html')
 
@@ -87,7 +88,17 @@ class LogOutView(View):
         logout(request)
         return redirect('login')
 def dashboard_view(request):
-    return render(request,'dashboard/dashboard.html')
+    context = {}
+    orders = Orders.objects.all().order_by('-id')
+    context['orders'] = orders[:3]
+    return render(request,'dashboard/dashboard.html',context)
+
+def dashboard_message_view(request):
+    context = {}
+    mails = Message.objects.all().order_by('-id')
+    context['mails'] = mails
+    return render(request,'dashboard/dashboard_messages.html',context)
+
 
 
 
@@ -131,12 +142,7 @@ def send_message(request):
 
 
 # view message
-@login_required
-def view_messages(request):
-    messages = Message.objects.filter(user=request.user)  # Get messages for the logged-in user
-    return render(request, 'view_messages.html', {'messages': messages})
-
-
-# logout
-
-
+# @login_required
+# def view_messages(request):
+#     messages = Message.objects.filter(user=request.user)  # Get messages for the logged-in user
+#     return render(request, 'view_messages.html', {'messages': messages})

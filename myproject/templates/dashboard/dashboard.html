@@ -5,6 +5,21 @@
 {% endblock %}
 {% block content %}
 <div class="layout_padding">
+    <div class="d-flex flex-row justify-content-center flex-md-row flex-sm-column ">
+        <h1>last Orders</h1>
+        {% for item in orders %}
+        <div class="col-lg-3 col-md-6 mb-4">
+            <div class="custom-card2">
+                <p>order:#{{item.id}}</p>
+                <p>table:#{{item.table}}</p>
+                <p>{{item.timestamp}}</p>
+                <h4>{{item.customer}}</h4>
+                </h4>{{item.status}}</h4>
+            </div>
+        </div>
+        {% endfor %}
+
+    </div>
     <div class="container my-5">
         <div class="row">
             <div class="col-lg-4 col-md-6 mb-4">
@@ -54,6 +69,16 @@
                         <h5 class="card-title">Static Charts</h5>
                         <p class="card-text">Static Charts of Cafe</p>
                         <a href="#" class="btn btn-primary">Charts</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="custom-card">
+                    <img src="{% static 'dashboard/images/card6.jpg' %}" class="card-img-top" alt="Card 5">
+                    <div class="card-body">
+                        <h5 class="card-title">Messages</h5>
+                        <p class="card-text">User Messages</p>
+                        <a href="{% url 'messages'%}" class="btn btn-primary">Messages</a>
                     </div>
                 </div>
             </div>

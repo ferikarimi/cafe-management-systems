@@ -4,6 +4,8 @@ from django.core.validators import MinValueValidator, MaxValueValidator
     
 class Category(models.Model):
     title = models.CharField(max_length= 100)
+    class Meta:
+        verbose_name_plural = "Categories"
 
 
 class MenuItems(models.Model):
@@ -19,3 +21,8 @@ class MenuItems(models.Model):
     
     def __str__(self):
         return self.name
+
+
+    class Meta:
+        verbose_name_plural = "Menu Items"
+

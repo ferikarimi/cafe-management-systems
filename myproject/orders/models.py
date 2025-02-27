@@ -20,6 +20,9 @@ class Tables(models.Model):
     class Meta:
         verbose_name_plural = "Tables"
 
+    def __str__(self):
+        return f"{self.table_number}"
+
 class Orders(models.Model):
     table = models.ForeignKey(Tables,on_delete=models.DO_NOTHING)
     customer = models.ForeignKey(Customers,on_delete=models.CASCADE)

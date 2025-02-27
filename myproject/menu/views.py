@@ -1,9 +1,10 @@
-from django.shortcuts import render
+from django.shortcuts import render , redirect
 from .models import MenuItems, Category
 from django.shortcuts import get_object_or_404
+from .forms import MenuItemForm
 # Create your views here.
-#Display Menu Items
 
+#Display Menu Items
 def menu(request):
     items = MenuItems.objects.all()
     categories = Category.objects.all()
@@ -31,10 +32,48 @@ def menu_search(request):
 
 #Item Details View
 def item_detail(request, item_id):
-    item = get_object_or_404(MenuItems, id = item_id) #Specific menu item
+    item = get_object_or_404(MenuItems, id=item_id) #Specific menu item
     context = {'item': item}
-    return render(request, 'item_details.html', context)
+    return render(request, 'menu/item_details.html', context)
 
 #Add to cart
 def add_to_cart(request, item_id):
     pass
+
+#Add Menu Item
+def add_menu_item (request) :
+    if request.method == 'POST' :
+        form = MenuItemForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('menu')
+    
+    else :
+        form = MenuItemForm()
+    
+    return render(request , 'menu/add_menu_item.html' , {'form' : form})
+
+
+
+#Edit Menu Item
+def edit_menu_item(request , item_id) :
+    menu_item = get_object_or_404(MenuItems , id=item_id)
+    if request.method =='POST' :
+        form = MenuItemForm(request.POST , instance=menu_item)
+        if form.is_valid() :
+            form.save()
+            return redirect('menu')
+        else :
+            form = MenuItemForm(instance=menu_item)
+        
+        return render(request , 'menu/edit_menu_item.html' , {'form' : form , 'menu_item' : menu_item})
+    
+
+#Delete Menu Item
+def delete_menu_item(request , item_id) :
+    menu_item = get_object_or_404(MenuItems , id=item_id)
+
+    if request.method == 'POST':
+        menu_item.delete()
+        return redirect('menu')
+    return render (request , 'menu/delete_menu_item.html' , {'menu_item' : menu_item})

@@ -83,9 +83,9 @@ WSGI_APPLICATION = 'myproject.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'cafe_project_db',
-        'USER': 'farzad3467',
-        'PASSWORD': 'FARZAD228',
+        'NAME': 'cafeprojectgroupdb',
+        'USER': 'postgres',
+        'PASSWORD': 'behrad',
         'HOST': 'localhost',
         'PORT': '5432'
     }
@@ -130,12 +130,10 @@ STATIC_URL = 'static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static')
 ]
-<<<<<<< HEAD
-
-=======
 # STATIC_ROOT = os.path.join(BASE_DIR,'static')
 MEDIA_ROOT = os.path.join(BASE_DIR, 'static/media')
->>>>>>> develop
+
+
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 

@@ -2,10 +2,21 @@ from django.shortcuts import render , redirect
 from .models import MenuItems, Category
 from django.shortcuts import get_object_or_404
 from .forms import MenuItemForm
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 
-#Display Menu Items
-def menu(request):
+#Display Menu Items for admin's
+@login_required
+def admin_menu(request):
+    if not request.user.is_staff:
+        return redirect('menu')
+    items = MenuItems.objects.all()
+    categories = Category.objects.all()
+    context = {'items': items, 'categories': categories}
+    return render(request, 'menu/dashboard_menu.html', context)
+
+#Display Menu Items for customer's
+def customer_menu(request):
     items = MenuItems.objects.all()
     categories = Category.objects.all()
     context = {'items': items, 'categories': categories}
@@ -41,12 +52,13 @@ def add_to_cart(request, item_id):
     pass
 
 #Add Menu Item
+@login_required
 def add_menu_item (request) :
     if request.method == 'POST' :
         form = MenuItemForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('menu')
+            return redirect('admin_menu')
     
     else :
         form = MenuItemForm()
@@ -56,24 +68,26 @@ def add_menu_item (request) :
 
 
 #Edit Menu Item
+@login_required
 def edit_menu_item(request , item_id) :
     menu_item = get_object_or_404(MenuItems , id=item_id)
     if request.method =='POST' :
         form = MenuItemForm(request.POST , instance=menu_item)
         if form.is_valid() :
             form.save()
-            return redirect('menu')
-        else :
-            form = MenuItemForm(instance=menu_item)
+            return redirect('admin_menu')
+    else :
+        form = MenuItemForm(instance=menu_item)
         
-        return render(request , 'menu/edit_menu_item.html' , {'form' : form , 'menu_item' : menu_item})
+    return render(request , 'menu/edit_menu_item.html' , {'form' : form , 'menu_item' : menu_item})
     
 
 #Delete Menu Item
+@login_required
 def delete_menu_item(request , item_id) :
     menu_item = get_object_or_404(MenuItems , id=item_id)
 
     if request.method == 'POST':
         menu_item.delete()
-        return redirect('menu')
+        return redirect('admin_menu')
     return render (request , 'menu/delete_menu_item.html' , {'menu_item' : menu_item})

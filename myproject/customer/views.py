@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect,reverse
 from .models import Customers,Message
 from orders.models import Orders
+from contactus.models import ContactUs
 from django.contrib import messages
 from django.http import HttpResponse,HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
@@ -11,7 +12,14 @@ from django.contrib.auth import authenticate, login, logout
 # Create your views here.
 
 def home_view(request):
-    return render(request, 'home.html',context=None)
+    latest_messages = ContactUs.objects.all().order_by('-created_at')[:3]
+    context = {'latest_messages' : latest_messages}
+    return render(request, 'home.html',context)
+
+def home_farsi_view(request):
+    latest_messages = ContactUs.objects.all().order_by('-created_at')[:3]
+    context = {'latest_messages' : latest_messages}
+    return render(request, 'home_farsi.html',context)
 
 def about_view(request):
     return render(request,'aboutus.html')
@@ -87,6 +95,8 @@ class LogOutView(View):
     def get(self, request):
         logout(request)
         return redirect('login')
+
+@login_required
 def dashboard_view(request):
     context = {}
     orders = Orders.objects.all().order_by('-id')

@@ -3,9 +3,10 @@ from .models import MenuItems, Category
 from django.shortcuts import get_object_or_404
 from .forms import MenuItemForm
 from django.contrib.auth.decorators import login_required
+from django.utils.translation import activate
 # Create your views here.
 
-#Display Menu Items for admin's
+#Display Menu Items for admin's english
 @login_required
 def admin_menu(request):
     if not request.user.is_staff:
@@ -14,6 +15,16 @@ def admin_menu(request):
     categories = Category.objects.all()
     context = {'items': items, 'categories': categories}
     return render(request, 'menu/dashboard_menu.html', context)
+
+#Display Menu Items for admin's farsi
+@login_required
+def admin_menu_farsi(request):
+    if not request.user.is_staff:
+        return redirect('menu')
+    items = MenuItems.objects.all()
+    categories = Category.objects.all()
+    context = {'items': items, 'categories': categories}
+    return render(request, 'menu/dashboard_menu_farsi.html', context)
 
 #Display Menu Items for customer's
 def customer_menu(request):

@@ -54,6 +54,9 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'contact_us' %}">Contact</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'home_farsi' %}">فارسی</a>
+                    </li>
                 </ul>
                 <form class="form-inline my-2 my-lg-0">
                     <div class="login_bt">
@@ -85,7 +88,7 @@
                                     <p class="banner_text">Your Wellness Is our Priority </p>
                                     <div class="btn_main">
                                         <div class="about_bt active"><a href="{% url 'about' %}">About Us</a></div>
-                                        <div class="callnow_bt"><a href="#">Call Now</a></div>
+                                        <div class="callnow_bt"><a href="{% url 'contact_us' %}">Call Now</a></div>
                                     </div>
                                 </div>
                             </div>
@@ -99,7 +102,7 @@
                                     <p class="banner_text">Best Choice You Ever Had </p>
                                     <div class="btn_main">
                                         <div class="about_bt active"><a href="{% url 'about' %}">About Us</a></div>
-                                        <div class="callnow_bt"><a href="#">Call Now</a></div>
+                                        <div class="callnow_bt"><a href="{% url 'contact_us' %}">Call Now</a></div>
                                     </div>
                                 </div>
                             </div>
@@ -113,7 +116,7 @@
                                     <p class="banner_text">The Taste Of Heaven </p>
                                     <div class="btn_main">
                                         <div class="about_bt active"><a href="{% url 'about' %}">About Us</a></div>
-                                        <div class="callnow_bt"><a href="#">Call Now</a></div>
+                                        <div class="callnow_bt"><a href="{% url 'contact_us' %}">Call Now</a></div>
                                     </div>
                                 </div>
                             </div>
@@ -142,7 +145,7 @@
                         <h1 class="about_taital">About Our shop</h1>
                         <h1 class="about_taital_1">Coffee distribution '</h1>
                         <p class=" about_text">Welcome to our website, where every cup is crafted with passion and the finest beans. Whether you're here for a quick espresso or a cozy hangout, we serve warmth in every sip!</p>
-                        <div class="readmore_btn"><a href="#">Read More</a></div>
+                        <div class="readmore_btn"><a href="{% url 'about' %}">Read More</a></div>
                     </div>
                 </div>
                 <div class="col-md-6">
@@ -175,7 +178,7 @@
                                 <div class="coffee_box">
                                     <h3 class="types_text">TYPES OF COFFEE</h3>
                                     <p class="looking_text">looking at its layout. The point of</p>
-                                    <div class="read_bt"><a href="#">Read More</a></div>
+                                    <div class="read_bt"><a href="{% url 'menu' %}">Read More</a></div>
                                 </div>
                             </div>
                             <div class="col-lg-3 col-md-6">
@@ -184,7 +187,7 @@
                                 <div class="coffee_box">
                                     <h3 class="types_text">BEAN VARIETIES</h3>
                                     <p class="looking_text">looking at its layout. The point of</p>
-                                    <div class="read_bt"><a href="#">Read More</a></div>
+                                    <div class="read_bt"><a href="{% url 'menu' %}">Read More</a></div>
                                 </div>
                             </div>
                             <div class="col-lg-3 col-md-6">
@@ -193,7 +196,7 @@
                                 <div class="coffee_box">
                                     <h3 class="types_text">COFFEE & PASTRY</h3>
                                     <p class="looking_text">looking at its layout. The point of</p>
-                                    <div class="read_bt"><a href="#">Read More</a></div>
+                                    <div class="read_bt"><a href="{% url 'menu' %}">Read More</a></div>
                                 </div>
                             </div>
                             <div class="col-lg-3 col-md-6">
@@ -202,103 +205,12 @@
                                 <div class="coffee_box">
                                     <h3 class="types_text">COFFEE TO GO</h3>
                                     <p class="looking_text">looking at its layout. The point of</p>
-                                    <div class="read_bt"><a href="#">Read More</a></div>
+                                    <div class="read_bt"><a href="{% url 'menu' %}">Read More</a></div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="carousel-item">
-                    <div class="container-fluid">
-                        <div class="row">
-                            <div class="col-lg-3 col-md-6">
-                                <div class="coffee_img"><img src="{% static 'home/images/img-1.png' %}" alt="image">
-                                </div>
-                                <div class="coffee_box">
-                                    <h3 class="types_text">TYPES OF COFFEE</h3>
-                                    <p class="looking_text">looking at its layout. The point of</p>
-                                    <div class="read_bt"><a href="#">Read More</a></div>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-6">
-                                <div class="coffee_img"><img src="{% static 'home/images/img-2.png' %}" alt="image">
-                                </div>
-                                <div class="coffee_box">
-                                    <h3 class="types_text">BEAN VARIETIES</h3>
-                                    <p class="looking_text">looking at its layout. The point of</p>
-                                    <div class="read_bt"><a href="#">Read More</a></div>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-6">
-                                <div class="coffee_img"><img src="{% static 'home/images/img-3.png' %}" alt="image">
-                                </div>
-                                <div class="coffee_box">
-                                    <h3 class="types_text">COFFEE & PASTRY</h3>
-                                    <p class="looking_text">looking at its layout. The point of</p>
-                                    <div class="read_bt"><a href="#">Read More</a></div>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-6">
-                                <div class="coffee_img"><img src="{% static 'home/images/img-4.png' %}" alt="image">
-                                </div>
-                                <div class="coffee_box">
-                                    <h3 class="types_text">COFFEE TO GO</h3>
-                                    <p class="looking_text">looking at its layout. The point of</p>
-                                    <div class="read_bt"><a href="#">Read More</a></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <div class="container-fluid">
-                        <div class="row">
-                            <div class="col-lg-3 col-md-6">
-                                <div class="coffee_img"><img src="{% static 'home/images/img-1.png' %}" alt="image">
-                                </div>
-                                <div class="coffee_box">
-                                    <h3 class="types_text">TYPES OF COFFEE</h3>
-                                    <p class="looking_text">looking at its layout. The point of</p>
-                                    <div class="read_bt"><a href="#">Read More</a></div>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-6">
-                                <div class="coffee_img"><img src="{% static 'home/images/img-2.png' %}" alt="image">
-                                </div>
-                                <div class="coffee_box">
-                                    <h3 class="types_text">BEAN VARIETIES</h3>
-                                    <p class="looking_text">looking at its layout. The point of</p>
-                                    <div class="read_bt"><a href="#">Read More</a></div>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-6">
-                                <div class="coffee_img"><img src="{% static 'home/images/img-3.png' %}" alt="image">
-                                </div>
-                                <div class="coffee_box">
-                                    <h3 class="types_text">COFFEE & PASTRY</h3>
-                                    <p class="looking_text">looking at its layout. The point of</p>
-                                    <div class="read_bt"><a href="#">Read More</a></div>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-6">
-                                <div class="coffee_img"><img src="{% static 'home/images/img-4.png' %}" alt="image">
-                                </div>
-                                <div class="coffee_box">
-                                    <h3 class="types_text">COFFEE TO GO</h3>
-                                    <p class="looking_text">looking at its layout. The point of</p>
-                                    <div class="read_bt"><a href="#">Read More</a></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <a class="carousel-control-prev" href="#main_slider" role="button" data-slide="prev">
-                <i class="fa fa-arrow-left"></i>
-            </a>
-            <a class="carousel-control-next" href="#main_slider" role="button" data-slide="next">
-                <i class="fa fa-arrow-right"></i>
-            </a>
         </div>
     </div>
 </div>
@@ -306,71 +218,27 @@
 <!-- client section start -->
 <div class="client_section layout_padding">
     <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <h1 class="about_taital">Wath Customers Say</h1>
+            </div>
+        </div>
         <div id="custom_slider" class="carousel slide" data-ride="carousel">
             <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <h1 class="about_taital">What syas customers</h1>
-                        </div>
-                    </div>
+                {% for message in latest_messages %}
+                <div class="carousel-item {% if forloop.first %}active{% endif %}">
                     <div class="client_section_2">
                         <div class="client_taital_main">
-                            <div class="client_left">
-                                <div class="client_img"><img src="{% static 'home/images/img-06.jpg' %}"
-                                                             alt="image"></div>
-                            </div>
                             <div class="client_right">
-                                <h3 class="moark_text">Joy Moark</h3>
-                                <p class="client_text">now use Lorem Ipsum as their default model text, and a search for
-                                    'lorem ipsum' will uncover many web sites still in their infancynow use Lorem Ipsum
-                                    as their default model text, </p>
+                                <h3 class="moark_text">{{ message.user_email }}</h3>
+                                <p class="client_text">{{ message.description }}</p>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="carousel-item">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <h1 class="about_taital">What syas customers</h1>
-                        </div>
-                    </div>
-                    <div class="client_section_2">
-                        <div class="client_taital_main">
-                            <div class="client_left">
-                                <div class="client_img"><img src="{% static 'home/images/img-05.jpg' %}"
-                                                             alt="image"></div>
-                            </div>
-                            <div class="client_right">
-                                <h3 class="moark_text">Joy Moark</h3>
-                                <p class="client_text">now use Lorem Ipsum as their default model text, and a search for
-                                    'lorem ipsum' will uncover many web sites still in their infancynow use Lorem Ipsum
-                                    as their default model text, </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <h1 class="about_taital">What syas customers</h1>
-                        </div>
-                    </div>
-                    <div class="client_section_2">
-                        <div class="client_taital_main">
-                            <div class="client_left">
-                                <div class="client_img"><img src="{% static 'home/images/client-img1.png' %}"
-                                                             alt="image"></div>
-                            </div>
-                            <div class="client_right">
-                                <h3 class="moark_text">Joy Moark</h3>
-                                <p class="client_text">now use Lorem Ipsum as their default model text, and a search for
-                                    'lorem ipsum' will uncover many web sites still in their infancynow use Lorem Ipsum
-                                    as their default model text, </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                {% empty %}
+                <p class="text-center">there is no message</p>
+                {% endfor %}
             </div>
             <a class="carousel-control-prev" href="#custom_slider" role="button" data-slide="prev">
                 <i class="fa fa-arrow-left"></i>
@@ -437,7 +305,7 @@
                     <ul>
                         <li>
                             <a href="#">
-                                <i class="fa fa-phone" aria-hidden="true"></i><span class="padding_left_10">+01 1234567890</span>
+                                <i class="fa fa-phone" aria-hidden="true"></i><span class="padding_left_10">0981234567890</span>
                             </a>
                         </li>
                         <li>

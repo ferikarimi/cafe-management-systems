@@ -5,6 +5,7 @@ from .views import (
     profile,
     send_message,
     home_view,
+    home_farsi_view,
     about_view,
     register_user_view,
     dashboard_view,
@@ -14,6 +15,7 @@ from .views import (
 
 urlpatterns = [
     path('',home_view, name='home'),
+    path('home_farsi',home_farsi_view, name='home_farsi'),
     path('about/',about_view,name='about'),
     path('dashboard/',dashboard_view,name='admin-dashboard'),
     path('dashboard/messages',dashboard_message_view,name='messages'),

@@ -84,9 +84,9 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'cafe_project_db',
-        'USER': 'postgres',
-        'PASSWORD': 'Alihoseini99',
-        'HOST': '127.0.0.1',
+        'USER': 'farzad3467',
+        'PASSWORD': 'FARZAD228',
+        'HOST': 'localhost',
         'PORT': '5432'
     }
 }

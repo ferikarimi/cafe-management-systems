@@ -4,6 +4,7 @@ from django.shortcuts import get_object_or_404
 from .forms import MenuItemForm
 from django.contrib.auth.decorators import login_required
 from django.utils.translation import activate
+from django.http import HttpResponseRedirect,HttpResponseBadRequest
 # Create your views here.
 
 #Display Menu Items for admin's english
@@ -70,7 +71,8 @@ def add_menu_item (request) :
         if form.is_valid():
             form.save()
             return redirect('admin_menu')
-    
+        else :
+            return HttpResponseBadRequest()
     else :
         form = MenuItemForm()
     
@@ -87,6 +89,8 @@ def edit_menu_item(request , item_id) :
         if form.is_valid() :
             form.save()
             return redirect('admin_menu')
+        else :
+            return HttpResponseBadRequest()
     else :
         form = MenuItemForm(instance=menu_item)
         

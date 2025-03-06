@@ -1,15 +1,8 @@
 from django.shortcuts import render,redirect,get_object_or_404
-from django.http import HttpResponseRedirect
-<<<<<<< HEAD
-from .forms import TablesForm
-from .models import Tables
-
-
-=======
+from django.http import HttpResponseRedirect , HttpResponseBadRequest
 from .forms import TablesForm,OrdersForm,OrderDetailsForm,ReceiptForm
 from .models import Tables,Orders,OrdersDetails,Reciepts
->>>>>>> 642821fccc2cde41b64e06d076bda3a3555dcd16
-# Create your views here.
+
 def tables_list_view(request):
     tables = Tables.objects.all()
     context = {'tables':tables}
@@ -60,10 +53,12 @@ def create_order_view(request):
         if form.is_valid():
             form.save()
             redirect("orders")
-        else:
-            form = OrdersForm()
+        else :
+            return HttpResponseBadRequest()
+    else:
+        form = OrdersForm()
 
-        return render(request,"orders/create_order.html",{"form":form})
+    return render(request,"orders/create_order.html",{"form":form})
 
 def order_update_view(request,order_id):
     context = {}

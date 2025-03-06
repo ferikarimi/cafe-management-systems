@@ -9,10 +9,7 @@ def contact_us_view(request):
         form = ContactUsForm(request.POST)
         if form.is_valid():
             form.save()
-            print("Message saved successfully!")
             return redirect('contact_us')
-        else:
-            print("Form Errors:", form.errors)
     else:
         form = ContactUsForm()
     context = {

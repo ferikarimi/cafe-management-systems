@@ -1,14 +1,10 @@
 from django.shortcuts import render,redirect,get_object_or_404
-from django.http import HttpResponseRedirect
-<<<<<<< HEAD
-from .forms import TablesForm
-from .models import Tables
+from django.http import HttpResponseRedirect,HttpResponseBadRequest
 
 
-=======
 from .forms import TablesForm,OrdersForm,OrderDetailsForm,ReceiptForm
 from .models import Tables,Orders,OrdersDetails,Reciepts
->>>>>>> 642821fccc2cde41b64e06d076bda3a3555dcd16
+
 # Create your views here.
 def tables_list_view(request):
     tables = Tables.objects.all()
@@ -61,9 +57,10 @@ def create_order_view(request):
             form.save()
             redirect("orders")
         else:
-            form = OrdersForm()
-
-        return render(request,"orders/create_order.html",{"form":form})
+            return HttpResponseBadRequest()    
+    else:
+        form = OrdersForm()
+    return render(request,"orders/create_order.html",{"form":form})
 
 def order_update_view(request,order_id):
     context = {}
@@ -99,10 +96,12 @@ def create_orderdetail(request):
         if form.is_valid():
             form.save()
             redirect("order_details")
-        else :
-            form = OrderDetailsForm()  
+        else:
+            return HttpResponseBadRequest()    
+    else :
+        form = OrderDetailsForm()  
 
-        return render(request,"orders/create_orderdetail.html",{"form":form})    
+    return render(request,"orders/create_orderdetail.html",{"form":form})    
 
 def edit_orderdetail(request,orderdetail_id):
     context = {}
@@ -116,10 +115,10 @@ def edit_orderdetail(request,orderdetail_id):
 
 def delete_orderdetail(request,orderdetail_id):
     context = {}
-    orderdetail_obj = get_object_or_404(Orders,id=orderdetail_id)
+    orderdetail_obj = get_object_or_404(OrdersDetails,id=orderdetail_id)
     if request.method == "POST":
         orderdetail_obj.delete()
-        redirect("order_details")
+        HttpResponseRedirect("orders/order_details/")
     return render(request,"orders/delete_orderdetail.html",context=context)  
 
 def receipt_show_list(request):
@@ -139,8 +138,10 @@ def create_receipt(request):
             form.save()
             redirect("receipt_list")
         else:
-            form = ReceiptForm()
-        return render(request,"orders/create_receipt.html",{"form":form})     
+            return HttpResponseBadRequest()    
+    else:
+        form = ReceiptForm()
+    return render(request,"orders/create_receipt.html",{"form":form})     
 
 def update_receipt(request,receipt_id):
     context = {}

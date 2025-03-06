@@ -83,7 +83,7 @@ WSGI_APPLICATION = 'myproject.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'cafe_project_db',
+        'NAME': 'cafeprojectgroupdb2',
         'USER': 'postgres',
         'PASSWORD': 'Alihoseini99',
         'HOST': '127.0.0.1',

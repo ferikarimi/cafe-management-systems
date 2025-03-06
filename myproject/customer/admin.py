@@ -7,4 +7,4 @@ admin.site.register(Message)
 class CustomerAdmin(admin.ModelAdmin):
     fields = [("username","email","password","role","is_staff"),("first_name","last_name","phone_number")]
     list_display = ("username","email","first_name","last_name","phone_number")
-    list_filter = ["id","first_name","last_name"]
+    list_filter = ["id","first_name","last_name"]    

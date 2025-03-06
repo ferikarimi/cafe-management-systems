@@ -27,7 +27,7 @@ class Orders(models.Model):
     table = models.ForeignKey(Tables,on_delete=models.DO_NOTHING)
     customer = models.ForeignKey(Customers,on_delete=models.CASCADE)
     status = models.CharField(max_length=100,blank=False,null=False,choices=STATUS_CHOICES,default="ongoing")
-    timestamp = models.TimeField()
+    timestamp = models.TimeField(auto_now_add=True)
     class Meta:
         verbose_name_plural = "Orders"
 
@@ -44,6 +44,6 @@ class Reciepts(models.Model):
     total_price = models.DecimalField(max_digits=7,decimal_places=2)
     final_price = models.DecimalField(max_digits=7,decimal_places=2)
     status = models.CharField(max_length=100,blank=False,null=False,choices=RECIEPT_STATUS_CHOICES,default="pending")
-    timestamp = models.TimeField()
+    timestamp = models.TimeField(auto_now_add=True)
     class Meta:
         verbose_name_plural = "Reciepts"

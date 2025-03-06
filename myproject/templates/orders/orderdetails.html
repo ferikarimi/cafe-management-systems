@@ -20,7 +20,7 @@
                         <p class="card-text">{{orderdetail.numbers}}</p>
                         <p class="card-text">{{orderdetail.subtotal_price}}</p>
                         <p class="card-text"><a href="#">New OrderDetail<a></p>
-                        <a href="{% url 'edit_order_detail' orderdetail.id %}" class="btn btn-primary">Edit</a>
+                        <a href="{% url 'orderdetail_edit' orderdetail.id %}" class="btn btn-primary">Edit</a>
                     </div>
                 </div>
             </div>

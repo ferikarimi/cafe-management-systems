@@ -2,10 +2,6 @@ from django.urls import path,include
 from .views import (tables_list_view,
                     tables_create_view,
                     tables_update_view,
-<<<<<<< HEAD
-                    table_delete_view)
-from menu.views import admin_menu ,admin_menu_farsi, add_menu_item , edit_menu_item , delete_menu_item
-=======
                     table_delete_view,
                     show_order_list,
                     show_order_indetail,
@@ -22,8 +18,8 @@ from menu.views import admin_menu ,admin_menu_farsi, add_menu_item , edit_menu_i
                     create_receipt,
                     update_receipt,
                     delete_receipt)
-from menu.views import admin_menu , add_menu_item , edit_menu_item , delete_menu_item
->>>>>>> 642821fccc2cde41b64e06d076bda3a3555dcd16
+from menu.views import admin_menu ,admin_menu_farsi, add_menu_item , edit_menu_item , delete_menu_item
+
 urlpatterns = [
     path('tables/',tables_list_view,name='tables_list'),
     path('table/add/',tables_create_view,name='table_create'),

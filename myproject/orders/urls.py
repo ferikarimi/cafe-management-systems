@@ -2,7 +2,7 @@ from django.urls import path,include
 from .views import (tables_list_view,
                     tables_create_view,
                     tables_update_view,
-                    table_delete_view ,
+                    table_delete_view,
                     show_order_list,
                     order_details_list,
                     order_update_view,
@@ -16,8 +16,6 @@ from .views import (tables_list_view,
                     update_receipt,
                     delete_receipt)
 from menu.views import admin_menu ,admin_menu_farsi, add_menu_item , edit_menu_item , delete_menu_item 
-from menu.views import admin_menu , add_menu_item , edit_menu_item , delete_menu_item
-
 
 urlpatterns = [
     path('tables/',tables_list_view,name='tables_list'),

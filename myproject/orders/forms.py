@@ -10,14 +10,17 @@ class OrdersForm(forms.ModelForm):
     class Meta:
         model = Orders
         fields = "__all__"
+        exclude = ["timestamp"]
 
 class OrderDetailsForm(forms.ModelForm):
     class Meta:
         model = OrdersDetails
-        fields = "__all__"        
+        fields = "__all__" 
+
 
 class ReceiptForm(forms.ModelForm):
     class Meta:
         model = Reciepts
         fields = "__all__"
+        exclude = ["timestamp"]
         

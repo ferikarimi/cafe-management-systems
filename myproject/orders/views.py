@@ -18,6 +18,8 @@ def tables_create_view(request):
         if form.is_valid():
             form.save()
             return redirect("tables_list")
+        else :
+            return HttpResponseBadRequest()
     else:
         form = TablesForm()
     return render(request,"dashboard/table_create.html",{"form":form})
